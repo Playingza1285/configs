@@ -60,6 +60,14 @@ call plug#end()
 "caps the history
 set history=500
 
+set wildmenu
+set wildignore=*.o,*~,*.pyc
+if has("win16") || has("win32")
+    set wildignore+=.git\*,hg\*,.svn\*
+else
+    set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
+endif
+
 " some minor changes
 set number
 set completeopt-=preview
@@ -126,7 +134,11 @@ nmap <C-o>o O<ESC>
 nmap <leader>s gg=G''
 
 "Opens Nerdtree for convienience
-nmap t :NERDTreeToggle<CR>
+nnoremap <leader>t :NERDTreeToggle<CR>
+nnoremap <leader>n :NERTTreeFocus<CR>
+
+" Nerd Tree stuff
+autocmd VimEnter * NERDTree | wincmd p " open nerdtree on launch of vim
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
 " syntax
