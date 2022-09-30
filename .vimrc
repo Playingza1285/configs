@@ -123,6 +123,11 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+" tab mappings
+nmap <leader>tn :tabedit<CR>
+nmap <leader>tc :tabclose<CR>
+nmap <leader>tm :tabmove<CR>
+
 " easy way to add lines without entering insert mode
 nmap <C-o> o<ESC>
 nmap <C-o>k O<ESC>
@@ -138,10 +143,11 @@ nmap <leader>s gg=G''
 
 "Opens Nerdtree for convienience
 nnoremap <leader>t :NERDTreeToggle<CR>
-nnoremap <leader>n :NERTTreeFocus<CR>
+nnoremap <leader>n :NERDTreeFocus<CR>
 
 " Nerd Tree stuff
 autocmd VimEnter * NERDTree | wincmd p " open nerdtree on launch of vim
+autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif " open nerdtree on new tab
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif " closes vim if its just nerdtree
 autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif " closes tab if its just nerdtree
 
