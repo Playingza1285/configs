@@ -124,10 +124,13 @@ map <C-h> <C-W>h
 map <C-l> <C-W>l
 
 " easy way to add lines without entering insert mode
-" add line after
 nmap <C-o> o<ESC>
-" add line before
-nmap <C-o>o O<ESC>
+nmap <C-o>k O<ESC>
+
+" pauls thing
+imap <C-e> <ESC>$a
+" extension to pausl thing (and in no way sketchy as fuck to use)
+imap <C-e>h <ESC>0i
 
 "fix indenting of the entire file
 "use sparingly cuz it might mess stuff up
@@ -139,6 +142,14 @@ nnoremap <leader>n :NERTTreeFocus<CR>
 
 " Nerd Tree stuff
 autocmd VimEnter * NERDTree | wincmd p " open nerdtree on launch of vim
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif " closes vim if its just nerdtree
+autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif " closes tab if its just nerdtree
+
+" Add current file to git
+nnoremap <leader>a :sil Git add %
+
+" enable default nerd commenter binds
+let g:NERDCreateDefaultMappings = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
 " syntax
