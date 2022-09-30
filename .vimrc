@@ -24,7 +24,6 @@ call plug#begin()
     endif
 
     Plug 'junegunn/rainbow_parentheses.vim'
-    Plug 'bfrg/vim-cpp-modern'
     Plug 'github/copilot.vim'
 
     """"""""""""""""""""""""""""""""""""""""""""""
