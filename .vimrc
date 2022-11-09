@@ -24,6 +24,7 @@ call plug#begin()
     endif
 
     Plug 'junegunn/rainbow_parentheses.vim'
+    Plug 'bfrg/vim-cpp-modern'
     Plug 'github/copilot.vim'
 
     """"""""""""""""""""""""""""""""""""""""""""""
@@ -116,6 +117,9 @@ let mapleader = ','
 " already bound in the main vimrc file
 " <leader>w
 
+" let h and l wrap to the next or prev line
+set whichwrap=<,>,h,l
+
 " make it easier to navigate splits
 map <C-j> <C-W>j
 map <C-k> <C-W>k
@@ -139,6 +143,9 @@ imap <C-e>h <ESC>0i
 "fix indenting of the entire file
 "use sparingly cuz it might mess stuff up
 nmap <leader>s gg=G''
+
+" disables copilot for convienvience
+autocmd VimEnter * :Copilot disable
 
 "Opens Nerdtree for convienience
 nnoremap <leader>t :NERDTreeToggle<CR>
